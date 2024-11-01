@@ -1,0 +1,75 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="form-container">
+    <div>
+        <label>ID:</label>
+        <input type="text" name="id" id="id" formControlName="id" required>
+        <small class="text-danger" *ngIf="profileForm.get('id')?.invalid && profileForm.get('id')?.touched">
+            *Please Enter your ID
+        </small>
+    </div>
+    <div>
+        <label>First Name:</label>
+        <input type="text" name="firstName" id="firstName" formControlName="firstName" minlength="3" required>
+        <small class="text-danger" *ngIf="profileForm.get('firstName')?.invalid && profileForm.get('firstName')?.touched">
+            *Please Enter your First Name
+        </small>
+        <small class="text-danger" *ngIf="profileForm.get('firstName')?.errors[minlength]">Enter Minimum 3 Characters</small>
+
+    </div>
+    <div>
+        <label>Last Name:</label>
+        <input type="text" name="lastName" id="lastName" formControlName="lastName" minlength="3" required>
+        <small class="text-danger" *ngIf="profileForm.get('lastName')?.invalid && profileForm.get('lastName')?.touched">
+            *Please Enter your Last Name
+        </small>
+        <small class="text-danger" *ngIf="profileForm.get('lastName')?.errors[minlength]">Enter Minimum 3 Characters</small>
+
+    </div>
+    <div>
+        <label>Date Of Birth:</label>
+        <input type="text" name="dateOfBirth" id="dateOfBirth" formControlName="dateOfBirth" required>
+        <small class="text-danger" *ngIf="profileForm.get('dateOfBirth')?.invalid && profileForm.get('dateOfBirth')?.touched">
+            *Please Enter your Date Of Birth
+        </small>
+    </div>
+    <div>
+        <label>Phone Number:</label>
+        <input type="number" name="phoneNumber" id="phoneNumber" formControlName="phoneNumber" minlength="9" required>
+        <small class="text-danger" *ngIf="profileForm.get('phoneNumber')?.invalid && profileForm.get('phoneNumber')?.touched">
+            *Please Enter your Phone Number
+        </small>
+        <small class="text-danger" *ngIf="profileForm.get('phoneNumber')?.errors[minlength]">Enter Minimum 9 Numbers</small>
+
+    </div>
+    <div>
+        <label>Email:</label>
+        <input type="text" name="email" id="email" formControlName="email" minlength="8" required>
+        <small class="text-danger" *ngIf="profileForm.get('email')?.invalid && profileForm.get('email')?.touched">
+            *Please Enter your Email
+        </small>
+        <small class="text-danger" *ngIf="profileForm.get('email')?.errors[minlength]">Enter Minimum 9 Numbers</small>
+
+    </div>
+
+    <button type="submit">Submit</button>
+    
+</form>
+
+<ul>
+    <li *ngFor="let items of profileForm">
+        {{items.id}} {{items.firstName}} {{items.lastName}} {{items.dateOfBirth}} {{items.phoneNumber}} {{items.email}} 
+    </li>
+</ul>
+
+
+<h1>Array from parent component</h1>
+<div *ngFor="let data of childParent">
+    {{data.id}}
+    {{data.firstName}}
+    {{data.lastName}}
+    {{data.dateOfBirth}}
+    {{data.phoneNumber}}
+    {{data.email}}
+</div>
+
+
+<button (click)="displayUsers()">Display Users</button>
